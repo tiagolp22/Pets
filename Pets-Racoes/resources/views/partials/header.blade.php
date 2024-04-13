@@ -1,9 +1,10 @@
-<header class="absolute inset-x-0 top-0 z-50">
+<header class="bg-blue-800 opacity-95 py-4">
+<div class="container mx-auto">
     <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="#" class="-m-1.5 p-1.5">
                 <span class="sr-only">Pet`s Rações</span>
-                <img class="h-8 w-auto" src="../../img/pets-racoes-h-150" alt="">
+                <img class="h-48 w-auto" src="https://www.petsracoesrecife.com.br/wp-content/uploads/2024/04/pets-300.png" alt="">
             </a>
         </div>
         <div class="flex lg:hidden">
@@ -19,7 +20,7 @@
         </div>
         @include('partials.nav')
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="{{ route('login')}}" class="text-sm font-semibold leading-6 text-gray-900">Log in <span
+            <a href="{{ route('login')}}" class="font-semibold leading-6 text-white text-lg">Log in <span
                     aria-hidden="true">&rarr;</span></a>
         </div>
     </nav>
@@ -63,5 +64,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </header>

@@ -1,6 +1,6 @@
-<footer class="bg-blue-900 text-white py-8">
-    <div class="container mx-auto flex flex-col md:flex-row justify-center items-center">
-        <div class="md:w-1/3 flex flex-col justify-center items-center">
+<footer class="bg-blue-800 text-white py-8 opacity-90">
+    <div class="container mx-auto flex flex-col md:flex-row justify-center items-center ">
+        <div class="md:w-1/3 flex flex-col justify-center items-left text-left">
             <h2 class="text-xl font-semibold mb-4">Contactez-nous</h2>
             <ul class="text-sm">
                 <li class="mb-2">
