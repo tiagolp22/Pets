@@ -3,7 +3,12 @@
 @section('title', 'Qui sommes nous')
 
 @section('content')
-    <div class="bg-gray-100 py-16">
+    <section class="hero-banner w-full h-200 relative">
+        <div class="absolute inset-0"></div>
+        <img src="{{ Vite::asset('resources/img/7200.jpg') }}" alt="Pet's Rações Logo" class="w-full h-100 object-cover">
+    </section>
+
+    <div class="bg-gray-100 py-16 lg:px-40">
         <div class="container mx-auto px-4 flex items-center">
             <div class="w-full md:w-2/3">
                 <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-8 text-left">Bienvenue chez Pet's

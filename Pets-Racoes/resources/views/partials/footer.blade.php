@@ -1,47 +1,84 @@
-<footer class="bg-blue-800 text-white py-8 opacity-90">
-    <div class="container mx-auto flex flex-col md:flex-row justify-center items-center ">
-        <div class="md:w-1/3 flex flex-col justify-center items-left text-left">
-            <h2 class="text-xl font-semibold mb-4">Contactez-nous</h2>
-            <ul class="text-sm">
-                <li class="mb-2">
-                    <span>Chemin des Ubaias, 286 - Casa Forte, Recife - PE, 52061-080, Brésil</span>
-                </li>
-                <li class="mb-2">
-                    <span>+55 (81) 99403-3708</span>
-                </li>
-                <li>
-                    <a href="mailto:atendimento@petsracoesrecife.com.br" class="underline">atendimento@petsracoesrecife.com.br</a>
-                </li>
-            </ul>
-            <ul class="text-sm flex space-x-4">
-                <li>
-                    <a href="https://web.facebook.com/petsracoesrecife" class="text-yellow-400 hover:text-yellow-300">
-                        <i class="fab fa-facebook"></i>
-                        <span class="ml-1">Facebook</span>
+@php
+    $annee = date('Y');
+@endphp
+<footer>
+    <div class="py-4 text-white lg:px-40">
+        <div class="container px-4 mx-auto">
+            <div class="-mx-4 flex flex-wrap justify-between">
+                <div class="px-4 my-4 w-full xl:w-1/5">
+                    <a href="/" class="block w-56 mb-10">
+                        <img src="{{ Vite::asset('resources/img/logo-pets-racoes 150.png') }}" alt="Pets Rations" />
                     </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/petsracoesrecife" class="text-yellow-400 hover:text-yellow-300">
-                        <i class="fab fa-instagram"></i>
-                        <span class="ml-1">Instagram</span>
+                    <p class="text-justify">
+                        Nous sommes Pet’s Rações, votre magasin 100% Pernambuco, nous livrons le même jour la meilleure
+                        nourriture et les meilleurs médicaments à Recife et dans la région.
+                    </p>
+                </div>
+
+
+                <div class="px-4 my-4 w-full sm:w-auto">
+                    <div>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Entreprise</h2>
+                    </div>
+                    <ul class="leading-8">
+                        <li><a href="/a-propos" class="hover-footer">À Propos</a></li>
+                        <li><a href="/conditions" class="hover-footer">Termes & Conditions</a></li>
+                        <li><a href="/confidentialite" class="hover-footer">Politique de Confidentialité</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="px-4 my-4 w-full sm:w-auto">
+                    <div>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Contact</h2>
+                    </div>
+                    <ul class="text-sm">
+                        <li class="mb-2 hover-footer">
+                            <span>Chemin des Ubaias, 286 - Casa Forte, Recife - PE, 52061-080, Brésil</span>
+                        </li>
+                        <li class="mb-2 hover-footer">
+                            <span>+55 (81) 99403-3708</span>
+                        </li>
+                        <li>
+                            <a href="mailto:atendimento@petsracoesrecife.com.br"
+                                class="underline hover-footer">atendimento@petsracoesrecife.com.br</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="px-4 my-4 w-full sm:w-auto xl:w-1/5">
+                    <div>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Suivez-nous sur les réseaux sociaux
+                        </h2>
+                    </div>
+
+                    <a href="lien-facebook"
+                        class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                        <i class="fa-brands fa-facebook"></i>
                     </a>
-                </li>
-            </ul>
-            <p class="text-xs mt-2">Suivez-nous sur les réseaux sociaux !</p>
-        </div>
-        <div class="md:w-1/3 mt-4 md:mt-0 flex flex-col justify-center items-center">
-            <h2 class="text-xl font-semibold mb-4">Informations</h2>
-            <ul class="text-sm">
-                <li class="mb-2">
-                    <a href="#" class="underline">Qui sommes-nous</a>
-                </li>
-                <li class="mb-2">
-                    <a href="#" class="underline">Livraison</a>
-                </li>
-            </ul>
+                    <a href="lien-insta"
+                        class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="lien-x"
+                        class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="text-center mt-4">
-        <span>© 2024 por Pet’s Rações</span>
+    <div class="bg-black py-4 text-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="-mx-4 flex flex-wrap justify-between">
+                <div class="px-4 w-full text-center sm:w-auto sm:text-left">
+                    <span>© {{ $annee }} por Pet’s Rações</span>
+                </div>
+                <div class="px-4 w-full text-center sm:w-auto sm:text-left">
+                    Fait avec ❤️.
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
