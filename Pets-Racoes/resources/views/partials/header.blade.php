@@ -4,7 +4,7 @@
             <div class="flex lg:flex-1">
                 <a href="/" class="-m-1.5 p-1.5">
                     <span class="sr-only">Pet`s Rações</span>
-                    <img class="h-48 w-auto"
+                    <img class="h-32 w-auto"
                         src="{{ Vite::asset('resources/img/pets-300.png') }}" alt="">
                 </a>
             </div>
