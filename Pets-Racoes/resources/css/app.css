@@ -2,3 +2,28 @@
 @import url("base/typography.css");
 @import url("base/general.css");
 
+@keyframes alert {
+    0% {
+        top: -200px
+    };
+    30% {
+        top: 0px
+    };
+    70% {
+        top: 0px
+    };
+    100% {
+        top: -200px
+    };
+}
+
+.active{
+    font-weight: 600;
+    color: tomato !important;
+    pointer-events: none;
+}
+
+.alert{
+    top: -200;
+    animation: alert 1000ms ease-in-out 100ms backwards;
+}
