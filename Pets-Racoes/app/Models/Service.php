@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-    protected $fillable = array("image");
+    protected $fillable = [
+        'nom',
+        'description',
+        'prix',
+        'image',
+    ];
 
-    public function imageFullpath(){
-        return "/stoarge/$this->image";
+    public function imageFullpath()
+    {
+        return asset('storage/' . $this->image);
     }
 }

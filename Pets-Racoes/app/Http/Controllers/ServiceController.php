@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Support\Facades\Storage;
+
 
 class ServiceController extends Controller
 {
@@ -92,23 +94,25 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        $validated = $request->validated();
-
-        $service->fill($validated);
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('images', 'public');
-            $service->image = $path;
-        }
+        $validatedData = $request->validated();
 
         try {
-            $service->save();
-            return redirect()->route("service.index")->with("success", "Le service a été mis à jour avec succès");
+            if ($request->hasFile('image')) {
+                if ($service->image) {
+                    Storage::disk('public')->delete($service->image);
+                }
+                $validatedData['image'] = $request->file('image')->store('services', 'public');
+            }
+
+            $service->update($validatedData);
+
+            return redirect()->route('service.index')->with('success', 'Le service a été mis à jour avec succès');
         } catch (Exception $e) {
-            Log::error("Erreur lors de la mise à jour du service : " . $e->getMessage());
+            Log::error('Erreur lors de la mise à jour du service : ' . $e->getMessage());
             return back()->withInput()->withErrors(['update_error' => 'Erreur lors de la mise à jour : ' . $e->getMessage()]);
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
