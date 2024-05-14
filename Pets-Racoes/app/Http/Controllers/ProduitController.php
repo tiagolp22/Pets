@@ -95,10 +95,10 @@ class ProduitController extends Controller
      */
     public function show(Produit $produit)
     {
-        $produit = session()->get("produit");
+       // $produit = session()->get("produit");
         //session()->forget("produit");
 
-        return view("produit",["produit"=>$produit, "title"=>$produit->nom]);
+        return view("produits.show",["produit"=>$produit, "title"=>$produit->nom]);
     }
 
 

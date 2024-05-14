@@ -15,7 +15,14 @@
                         <div class="h-[460px] rounded-lg mb-4 bg-orange-300">
                             <img src="{{ asset($service->imageFullpath()) }}" alt="{{ $service->nom }}" class="w-full h-full object-cover">
                         </div>
+                        <div class="flex -mx-2 mb-4">
+                            <div class="px-2">
+                                <a href="{{ route('service.create') }}"
+                                    class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">service create</a>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="md:flex-1 px-4 text-orange-600 max-w-md">
                         <h2 class="text-2xl font-bold mb-2">{{ $service->nom }}</h2>
                         <div class="flex mb-4">

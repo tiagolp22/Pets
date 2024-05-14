@@ -15,20 +15,17 @@
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row -mx-4">
                     <div class="md:flex-1 px-4">
-                        <div class="h-[460px] rounded-lg mb-4  bg-orange-300">
-                            <img class="" src="{{ Vite::asset('resources/img/product1.png') }}" alt="Product Image">
+                        <div class="h-[480px] rounded-lg mb-4  bg-orange-300">
+                            <img class="w-full h-full object-cover" src="{{ Vite::asset('storage/app/public/' . $produit->image) }}" alt="Product Image">
                         </div>
                         <div class="flex -mx-2 mb-4">
                             <div class="px-2">
                                 <button
-                                    class="inline-block bg-emerald-400 hover:bg-emerald-600 text-white px-4 py-2 rounded-full">Add
-                                    to Cart</button>
+                                    class="inline-block bg-emerald-400 hover:bg-emerald-600 text-white px-4 py-2 rounded-full">achat</button>
                             </div>
-                            <div class="px-2\">
-                                <button
-                                    class="inline-block
-                                bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">Add
-                                to Wishlist</button>
+                            <div class="px-2">
+                                <a href="{{ route('produit.create') }}"
+                                    class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">produit create</a>
                             </div>
                         </div>
                     </div>
