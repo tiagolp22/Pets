@@ -9,6 +9,7 @@ use Exception;
 //use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use PhpParser\NodeVisitor\FirstFindingVisitor;
 
 class ProduitController extends Controller
 {
@@ -36,9 +37,13 @@ class ProduitController extends Controller
         $tri = $request->query('tri', 'nom');
         $direction = $request->query('direction', 'asc');
         $prixMax = $request->query('prix-max');
+        $categorie = $request->query("categorie");
 
         //query demare une demande au modele et doit finir avec get()
         $produitQuery = Produit::query();
+        if ($categorie){
+            $produitQuery->where("cetegorie", "==", $categorie);
+        }
         $produitQuery->orderBy($tri, $direction);
 
 
@@ -48,7 +53,6 @@ class ProduitController extends Controller
 
 
     $produits = $produitQuery->get();
-
 
     return view("produits.index", ["produits" => $produits, "title" => "Produits"]);
 

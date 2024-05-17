@@ -124,7 +124,7 @@
                         <div class="relative text-white px-6 pb-6 mt-6">
                             <span class="block opacity-75 -mb-1">{{ $produit->nom }}</span>
                             <div class="flex justify-between">
-                                <span class="block font-semibold text-xl">{{ $produit->categorie }}</span>
+                                <span class="block font-semibold text-xl">{{ $produit->categorie->nom }}</span>
                                 <span
                                     class="block bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">{{ $produit->prix }}</span>
                             </div>
