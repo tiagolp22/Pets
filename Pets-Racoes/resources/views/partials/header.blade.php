@@ -24,6 +24,8 @@
                 <a href="{{ route('login') }}" class="font-semibold leading-6 text-blue text-lg">Log in <span
                         aria-hidden="true">&rarr;</span></a>
             </div>
+            <a href="/locale?lang=en"> EN</a>
+             <a href={{ route("locale", ["lang" => "fr"]) }}> FR</a>
         </nav>
         <!-- Mobile menu, show/hide based on menu open state. -->
         {{-- <div class="lg:hidden" role="dialog" aria-modal="true">

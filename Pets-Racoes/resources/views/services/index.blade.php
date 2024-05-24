@@ -30,6 +30,14 @@
                                     class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full">
                                     Voir le service
                                 </a>
+                                <a href="{{ route("service.edit", $service) }}" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full"> EDIT </a>
+                                <form action="{{ route('service.destroy', $service->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full">
+                                        DELETE
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     @endforeach

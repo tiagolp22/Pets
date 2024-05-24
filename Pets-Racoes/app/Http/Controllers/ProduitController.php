@@ -51,8 +51,10 @@ class ProduitController extends Controller
            $produitQuery->where("prix", "<", $prixMax);
     }
 
+    $produits = $produitQuery->simplePaginate(2)->withQueryString();
 
-    $produits = $produitQuery->get();
+
+    //$produits = $produitQuery->get();
 
     return view("produits.index", ["produits" => $produits, "title" => "Produits"]);
 

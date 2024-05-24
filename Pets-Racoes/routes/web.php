@@ -5,6 +5,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
@@ -15,16 +16,23 @@ use App\Http\Controllers\ServiceController;
 // })->name("index");
 
 
+
+Route::get('/locale', function (Request $request) {
+    $query = $request->query();
+    if (isset($query['lang'])) {
+        $lang = $query['lang'];
+    } else {
+        $lang =  "en";
+    }
+    session()->put('locale', $lang);
+    return back();
+})->name('locale');
+
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/contact', function () {
     return view('contact');
 })->name("contact");
-
-
-// Route::get('/services', function () {
-//     return view('services');
-// })->name("services");
 
 
 Route::get('/login', function () {
