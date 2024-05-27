@@ -10,38 +10,37 @@
                         <img src="{{ Vite::asset('resources/img/logo-pets-racoes 150.png') }}" alt="Pets Rations" />
                     </a>
                     <p class="text-justify">
-                        Nous sommes Pet’s Rações, votre magasin 100% Pernambuco, nous livrons le même jour la meilleure
-                        nourriture et les meilleurs médicaments à Recife et dans la région.
+                        {{ __('produits.index.subtitle') }}
                     </p>
                 </div>
 
 
                 <div class="px-4 my-4 w-full sm:w-auto">
                     <div>
-                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Entreprise</h2>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.company') }}</h2>
                     </div>
                     <ul class="leading-8">
-                        <li><a href="/a-propos" class="hover-footer">À Propos</a></li>
-                        <li><a href="/conditions" class="hover-footer">Termes & Conditions</a></li>
-                        <li><a href="/confidentialite" class="hover-footer">Politique de Confidentialité</a></li>
+                        <li><a href="/a-propos" class="hover-footer">{{ __('footer.about') }}</a></li>
+                        <li><a href="/conditions" class="hover-footer">{{ __('footer.terms') }}</a></li>
+                        <li><a href="/confidentialite" class="hover-footer">{{ __('footer.privacy') }}</a></li>
                     </ul>
                 </div>
 
 
                 <div class="px-4 my-4 w-full sm:w-auto">
                     <div>
-                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Contact</h2>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.contact') }}</h2>
                     </div>
                     <ul class="text-sm">
                         <li class="mb-2 hover-footer">
-                            <span>Chemin des Ubaias, 286 - Casa Forte, Recife - PE, 52061-080, Brésil</span>
+                            <span>{{ __('footer.address') }}</span>
                         </li>
                         <li class="mb-2 hover-footer">
-                            <span>+55 (81) 99403-3708</span>
+                            <span>{{ __('footer.phone') }}</span>
                         </li>
                         <li>
-                            <a href="mailto:atendimento@petsracoesrecife.com.br"
-                                class="underline hover-footer">atendimento@petsracoesrecife.com.br</a>
+                            <a href="mailto:{{ __('footer.email') }}"
+                                class="underline hover-footer">{{ __('footer.email') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -49,8 +48,7 @@
 
                 <div class="px-4 my-4 w-full sm:w-auto xl:w-1/5">
                     <div>
-                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Suivez-nous sur les réseaux sociaux
-                        </h2>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.follow_us') }}</h2>
                     </div>
 
                     <a href="lien-facebook"
@@ -73,10 +71,10 @@
         <div class="container mx-auto px-4">
             <div class="-mx-4 flex flex-wrap justify-between">
                 <div class="px-4 w-full text-center sm:w-auto sm:text-left">
-                    <span>© {{ $annee }} por Pet’s Rações</span>
+                    <span>{{ __('footer.copyright', ['year' => $annee]) }}</span>
                 </div>
                 <div class="px-4 w-full text-center sm:w-auto sm:text-left">
-                    Fait avec ❤️.
+                    {{ __('footer.made_with_love') }}
                 </div>
             </div>
         </div>
