@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produit;
+use App\Models\Categorie;
 use App\Http\Requests\StoreProduitRequest;
 use App\Http\Requests\UpdateProduitRequest;
 use Exception;
 //use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\NodeVisitor\FirstFindingVisitor;
 
 class ProduitController extends Controller
@@ -27,9 +29,8 @@ class ProduitController extends Controller
         Log::info($request->url());
         Log::warning("message");
 
-        try{
-
-        }catch(Exception $e){
+        try {
+        } catch (Exception $e) {
             Log::error("error");
             return back()->with("erreur", $e->getMessage());
         }
@@ -41,23 +42,22 @@ class ProduitController extends Controller
 
         //query demare une demande au modele et doit finir avec get()
         $produitQuery = Produit::query();
-        if ($categorie){
+        if ($categorie) {
             $produitQuery->where("cetegorie", "==", $categorie);
         }
         $produitQuery->orderBy($tri, $direction);
 
 
-        if($prixMax){
-           $produitQuery->where("prix", "<", $prixMax);
-    }
+        if ($prixMax) {
+            $produitQuery->where("prix", "<", $prixMax);
+        }
 
-    $produits = $produitQuery->simplePaginate(2)->withQueryString();
+        $produits = $produitQuery->simplePaginate(2)->withQueryString();
 
 
-    //$produits = $produitQuery->get();
+        //$produits = $produitQuery->get();
 
-    return view("produits.index", ["produits" => $produits, "title" => "Produits"]);
-
+        return view("produits.index", ["produits" => $produits, "title" => "Produits"]);
     }
 
 
@@ -92,7 +92,6 @@ class ProduitController extends Controller
         } catch (\Exception $e) {
             return back()->withInput()->withErrors(['save_error' => 'Erreur lors de l\'enregistrement: ' . $e->getMessage()]);
         }
-
     }
 
 
@@ -101,10 +100,10 @@ class ProduitController extends Controller
      */
     public function show(Produit $produit)
     {
-       // $produit = session()->get("produit");
+        // $produit = session()->get("produit");
         //session()->forget("produit");
 
-        return view("produits.show",["produit"=>$produit, "title"=>$produit->nom]);
+        return view("produits.show", ["produit" => $produit, "title" => $produit->nom]);
     }
 
 
@@ -113,8 +112,16 @@ class ProduitController extends Controller
      */
     public function edit(Produit $produit)
     {
-        //
+        $categories = Categorie::all();
+
+        return view('produits.edit', [
+            'produit' => $produit,
+            'categories' => $categories,
+            'title' => 'Éditer un produit'
+        ]);
     }
+
+
 
 
     /**
@@ -122,8 +129,30 @@ class ProduitController extends Controller
      */
     public function update(UpdateProduitRequest $request, Produit $produit)
     {
-        //
+        $validated = $request->validated();
+
+       
+        $produit->fill($validated);
+
+        if ($request->hasFile('image')) {
+
+            if ($produit->image) {
+                Storage::disk('public')->delete($produit->image);
+            }
+
+            $path = $request->file('image')->store('images', 'public');
+            $produit->image = $path;
+        }
+
+        try {
+            $produit->save();
+            return redirect()->route("produit.index")->with("success", "Le produit a été mis à jour");
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['save_error' => 'Erreur lors de la mise à jour: ' . $e->getMessage()]);
+        }
     }
+
+
 
 
     /**
@@ -131,6 +160,14 @@ class ProduitController extends Controller
      */
     public function destroy(Produit $produit)
     {
-        //
+        try {
+            if ($produit->image) {
+                Storage::disk('public')->delete($produit->image);
+            }
+            $produit->delete();
+            return redirect()->route("produit.index")->with("success", "Le produit a été supprimé");
+        } catch (\Exception $e) {
+            return back()->with("error", "Erreur lors de la suppression: " . $e->getMessage());
+        }
     }
 }

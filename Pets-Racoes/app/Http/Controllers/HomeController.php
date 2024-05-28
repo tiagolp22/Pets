@@ -16,8 +16,7 @@ class HomeController extends Controller
         $direction = $request->query('direction', 'asc');
         $prixMax = $request->query('prix-max');
 
-        $produitQuery = Produit::query();
-        $produitQuery->orderBy($tri, $direction);
+        $produitQuery = Produit::with('categorie')->orderBy($tri, $direction);
 
         if ($prixMax) {
             $produitQuery->where('prix', '<', $prixMax);
