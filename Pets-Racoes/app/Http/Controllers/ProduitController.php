@@ -122,8 +122,6 @@ class ProduitController extends Controller
     }
 
 
-
-
     /**
      * Update the specified resource in storage.
      */
@@ -131,7 +129,7 @@ class ProduitController extends Controller
     {
         $validated = $request->validated();
 
-       
+
         $produit->fill($validated);
 
         if ($request->hasFile('image')) {
@@ -151,8 +149,6 @@ class ProduitController extends Controller
             return back()->withInput()->withErrors(['save_error' => 'Erreur lors de la mise à jour: ' . $e->getMessage()]);
         }
     }
-
-
 
 
     /**

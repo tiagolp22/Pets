@@ -9,7 +9,7 @@
         <div class="relative overflow-hidden bg-gray-900 py-32 sm:py-40 lg:p-32">
             <img src="{{ Vite::asset('resources/img/index.png') }}" alt="banner"
                 class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center opacity-55">
-            
+
             <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
                 <div class="mx-auto max-w-2xl lg:mx-0 my-4">
                     <h1 class="text-4xl font-bold tracking-tight sm:text-6xl text-white">{{ __('produits.index.title') }}</h1>
@@ -74,7 +74,7 @@
                         <div class="relative text-white px-6 pb-6 mt-6">
                             <span class="block opacity-75 -mb-1">{{ $produit->nom }}</span>
                             <div class="flex justify-between">
-                                <span class="block font-semibold text-xl">{{ $produit->categorie }}</span>
+                                <span class="block font-semibold text-xl">{{ $produit->categorie->nom }}</span>
                                 <span class="block bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">{{ $produit->prix }}</span>
                             </div>
                         </div>
