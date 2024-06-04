@@ -66,7 +66,10 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        return view("produits.create");
+        $categories = Categorie::all();
+        return view('produits.create', [
+            'categories' => $categories
+        ]);
     }
 
 
@@ -80,7 +83,6 @@ class ProduitController extends Controller
         $nouveauProduit = new Produit();
         $nouveauProduit->fill($validated);
 
-
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('images', 'public');
             $nouveauProduit->image = $path;
@@ -89,7 +91,7 @@ class ProduitController extends Controller
         try {
             $nouveauProduit->save();
             return redirect()->route("produit.index")->with("success", "Le produit été ajouté");
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return back()->withInput()->withErrors(['save_error' => 'Erreur lors de l\'enregistrement: ' . $e->getMessage()]);
         }
     }

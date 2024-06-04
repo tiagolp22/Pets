@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Produit;
 use Illuminate\Http\Request;
+use App\Http\Middleware;
 
 class HomeController extends Controller
 {
+    // public function __construct(){
+    //     $this->middleware("auth")->except(["index", 'show']);
+    // }
     /**
      * Display the index page with a list of produits.
      */

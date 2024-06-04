@@ -16,7 +16,8 @@
                 <div class="flex flex-col md:flex-row -mx-4">
                     <div class="md:flex-1 px-4">
                         <div class="h-[480px] rounded-lg mb-4  bg-orange-300">
-                            <img class="w-full h-full object-cover" src="{{ Vite::asset('storage/app/public/' . $produit->image) }}" alt="Product Image">
+                            <img class="w-full h-full object-cover"
+                                src="{{ Vite::asset('storage/app/public/' . $produit->image) }}" alt="Product Image">
                         </div>
                         <div class="flex -mx-2 mb-4">
                             <div class="px-2">
@@ -25,18 +26,23 @@
                             </div>
                             <div class="px-2">
                                 <a href="{{ route('produit.create') }}"
-                                    class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">Produit Create</a>
+                                    class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">Produit
+                                    Create</a>
                             </div>
                             <div class="px-2">
                                 <a href="{{ route('produit.edit', $produit->id) }}"
                                     class="inline-block bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 rounded-full">Edit</a>
                             </div>
                             <div class="px-2">
-                                <form action="{{ route('produit.destroy', $produit->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="inline-block bg-red-400 hover:bg-red-600 text-white px-4 py-2 rounded-full">Delete</button>
-                                </form>
+                                @auth
+                                    <form action="{{ route('produit.destroy', $produit->id) }}" method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="inline-block bg-red-400 hover:bg-red-600 text-white px-4 py-2 rounded-full">Delete</button>
+                                    </form>
+                                @endauth
                             </div>
                         </div>
                     </div>

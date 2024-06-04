@@ -1,6 +1,6 @@
 @extends('partials.base')
 
-@section('title', 'INDEX')
+@section('title', 'Ajouter un produit')
 
 @section('content')
     @if (session('success'))
@@ -8,11 +8,6 @@
             {{ session('success') }}
         </x-alert>
     @endif
-    {{-- @if ($produits->isEmpty())
-        <x-alert :type="'infos'">
-            Vous n'avez aucun produit à afficher
-        </x-alert>
-    @endif --}}
 
     <main>
         <div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
@@ -62,7 +57,7 @@
                     </label>
                     <input
                         class="w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white leading-tight focus:shadow-outline"
-                        id="image" name="image" type="file" accept="image/*" value="{{ old('image') }}" required>
+                        id="image" name="image" type="file" accept="image/*" required>
                     @error('image')
                         <p class="text-red-900 text-lg">{{ $message }}</p>
                     @enderror
@@ -74,8 +69,8 @@
                     <select
                         class="w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white leading-tight focus:shadow-outline"
                         id="active" name="active">
-                        <option value="1" {{ old('active') == 'true' ? 'selected' : '' }}>Oui</option>
-                        <option value="0" {{ old('active') == 'false' ? 'selected' : '' }}>Non</option>
+                        <option value="1" {{ old('active') == '1' ? 'selected' : '' }}>Oui</option>
+                        <option value="0" {{ old('active') == '0' ? 'selected' : '' }}>Non</option>
                     </select>
                     @error('active')
                         <p class="text-red-900 text-lg">{{ $message }}</p>
@@ -87,15 +82,15 @@
                     </label>
                     <select
                         class="w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white leading-tight focus:shadow-outline"
-                        id="categorie" name="categorie">
+                        id="categorie" name="categorie_id">
                         <option value="">Sélectionnez une catégorie</option>
-                        <option value="chien" {{ old('categorie') == 'chien' ? 'selected' : '' }}>Chien</option>
-                        <option value="chat" {{ old('categorie') == 'chat' ? 'selected' : '' }}>Chat</option>
-                        <option value="oiseau" {{ old('categorie') == 'oiseau' ? 'selected' : '' }}>Oiseau</option>
-                        <option value="poisson" {{ old('categorie') == 'poisson' ? 'selected' : '' }}>Poisson</option>
-                        <option value="autre" {{ old('categorie') == 'autre' ? 'selected' : '' }}>Autre</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" {{ old('categorie_id') == $category->id ? 'selected' : '' }}>
+                                {{ $category->nom }}
+                            </option>
+                        @endforeach
                     </select>
-                    @error('categorie')
+                    @error('categorie_id')
                         <p class="text-red-900 text-lg">{{ $message }}</p>
                     @enderror
                 </div>
@@ -107,11 +102,6 @@
                     </button>
                 </div>
             </form>
-
-
         </div>
-
-
-
-
-    @endsection
+    </main>
+@endsection
