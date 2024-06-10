@@ -5,7 +5,8 @@
 @section('content')
     <main>
         <div class="relative overflow-hidden py-32 sm:py-40">
-            <img src="{{ asset('storage/gato-cao.png') }}" alt="banner" class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center">
+            <img src="{{ Vite::asset('resources/img/autres.gif') }}" alt="banner"
+                class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center">
         </div>
 
         <div class="py-8">
@@ -13,14 +14,18 @@
                 <div class="flex flex-col md:flex-row -mx-4">
                     <div class="md:flex-1 px-4">
                         <div class="h-[460px] rounded-lg mb-4 bg-orange-300">
-                            <img src="{{ asset($service->imageFullpath()) }}" alt="{{ $service->nom }}" class="w-full h-full object-cover">
+                            <img src="{{ asset($service->imageFullpath()) }}" alt="{{ $service->nom }}"
+                                class="w-full h-full object-cover">
                         </div>
-                        <div class="flex -mx-2 mb-4">
-                            <div class="px-2">
-                                <a href="{{ route('service.create') }}"
-                                    class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">service create</a>
+                        @can('create', $service)
+                            <div class="flex -mx-2 mb-4">
+                                <div class="px-2">
+                                    <a href="{{ route('service.create') }}"
+                                        class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">service
+                                        create</a>
+                                </div>
                             </div>
-                        </div>
+                        @endcan
                     </div>
 
                     <div class="md:flex-1 px-4 text-orange-600 max-w-md">

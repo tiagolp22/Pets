@@ -15,6 +15,9 @@ class Produit extends Model
     {
         return $this->belongsTo(Categorie::class, 'categorie_id');
     }
+
+    public function imageFullpath()
+    {
+        return $this->image ? 'storage/' . $this->image : '';
+    }
 }
-
-

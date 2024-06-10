@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServiceController;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/locale', function (Request $request) {
     $query = $request->query();
@@ -67,3 +68,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/linkstorage', function(){
     Artisan::call('storage:link');
 });
+
+
+Route::get('/produits/{produit}/checkout', [PaymentController::class, 'showCheckoutForm'])->name('checkout.form');
+Route::post('/produits/{produit}/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
