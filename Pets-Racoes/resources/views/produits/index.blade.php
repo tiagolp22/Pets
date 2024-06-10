@@ -8,23 +8,23 @@
             {{ __('produits.index.x-alert') }}
         </x-alert>
     @endif
-    <div class="relative overflow-hidden bg-gray-900 py-32 sm:py-40 lg:p-32">
+    <div class="relative overflow-hidden bg-gray-900 py-32 sm:py-40 lg:p-48">
         @php
-            $bannerImage = 'autres.png';
+            $bannerImage = 'autres.gif';
             if (request()->has('categorie')) {
                 $categorie = (array) request('categorie');
                 if (in_array('chien', $categorie)) {
-                    $bannerImage = 'chien.png';
+                    $bannerImage = 'chien.gif';
                 } elseif (in_array('chat', $categorie)) {
-                    $bannerImage = 'chat.png';
+                    $bannerImage = 'chat.gif';
                 } elseif (in_array('oiseau', $categorie)) {
-                    $bannerImage = 'oiseau.png';
+                    $bannerImage = 'oiseau.gif';
                 }
             }
         @endphp
 
         <img src="{{ Vite::asset('resources/img/' . $bannerImage) }}" alt="banner"
-            class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center opacity-55">
+            class="absolute inset-0 z-0 h-full w-full object-cover opacity-55" style="object-position: center 25%;">
 
         <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
             <div class="mx-auto max-w-2xl lg:mx-0 my-4">
@@ -56,6 +56,13 @@
                                     <input type="checkbox" name="categorie[]" value="chien" class="mr-2"
                                         {{ in_array('chien', (array) request('categorie', [])) ? 'checked' : '' }}>
                                     {{ __('produits.index.dogs') }}
+                                </label>
+                            </li>
+                            <li>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="categorie[]" value="oiseau" class="mr-2"
+                                        {{ in_array('oiseau', (array) request('categorie', [])) ? 'checked' : '' }}>
+                                    {{ __('produits.index.oiseau') }}
                                 </label>
                             </li>
                             <li>
@@ -121,7 +128,8 @@
                             <div
                                 class="relative pt-10 px-10 flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"></div>
-                                <img class="relative w-64 h-64 sm:h-48 lg:h-72" src="{{ Vite::asset('storage/app/public/' . $produit->image) }}" alt="Product Image">
+                                <img class="relative w-64 h-64 sm:h-48 lg:h-72"
+                                    src="{{ Vite::asset('storage/app/public/' . $produit->image) }}" alt="Product Image">
                             </div>
                             <div class="relative text-white px-6 pb-6 mt-6">
                                 <span class="block opacity-75 -mb-1">{{ $produit->nom }}</span>

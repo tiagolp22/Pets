@@ -30,9 +30,8 @@ class ProduitController extends Controller
     $produitQuery = Produit::with('categorie')->orderBy($tri, $direction);
 
     if (!empty($categories)) {
-        // Verifica se $categories é uma string
+        
         if (is_string($categories)) {
-            // Divide a string em um array usando vírgulas como delimitador
             $categories = explode(',', $categories);
         }
 

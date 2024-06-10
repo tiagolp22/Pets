@@ -4,10 +4,10 @@
 
 @section('content')
     <main>
-        <section class="hero-banner w-full h-200 relative">
-            <div class="absolute inset-0"></div>
-            <img src="{{ Vite::asset('resources/img/banho.png') }}" alt="Hero Banner" class="w-full h-200 object-cover">
-        </section>
+        <div class="relative overflow-hidden bg-gray-900 py-32 sm:py-40 lg:p-64">
+            <img src="{{ Vite::asset('resources/img/gato-cao.png') }}" alt="Hero Banner"
+                class="absolute inset-0 z-0 h-full w-full object-cover object-right md:object-center">
+        </div>
 
         <div class="container mx-auto px-8 py-12">
             <h2 class="text-3xl font-semibold text-center mb-8">
@@ -30,14 +30,21 @@
                                     class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full">
                                     Voir le service
                                 </a>
-                                <a href="{{ route("service.edit", $service) }}" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full"> EDIT </a>
-                                <form action="{{ route('service.destroy', $service->id) }}" method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full">
-                                        DELETE
-                                    </button>
-                                </form>
+                                 @can('edit', $service)
+                                    <a href="{{ route('service.edit', $service) }}"
+                                        class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full">EDIT</a>
+                                @endcan
+                                @can('delete', $service)
+                                    <form action="{{ route('service.destroy', $service->id) }}" method="POST"
+                                        class="inline-block" onsubmit="return confirm('Are you sure you want to delete this service?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full">
+                                            DELETE
+                                        </button>
+                                    </form>
+                                @endcan
                             </div>
                         </div>
                     @endforeach

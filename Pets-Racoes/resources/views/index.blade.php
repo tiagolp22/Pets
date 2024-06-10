@@ -64,13 +64,15 @@
                 </div>
             </div>
         </section>
-
+        <div class="py-8 lg:px-80">
+            <h2 class="container mx-auto">{{ __('index.h2') }}<h2>
+        </div>
         <div
             class="lg:px-40 w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
+
             @foreach ($produits as $produit)
                 <a href="{{ route('produit.show', ['produit' => $produit->id]) }}">
-                    <div
-                        class="flex-shrink-0 m-6 relative overflow-hidden bg-orange-500 rounded-lg max-w-xs shadow-lg group">
+                    <div class="flex-shrink-0 relative overflow-hidden bg-orange-500 rounded-lg max-w-xs shadow-lg group">
                         <svg class="absolute bottom-0 left-0 mb-8 scale-150 group-hover:scale-[1.65] transition-transform"
                             viewBox="0 0 375 283" fill="none" style="opacity: 0.1;">
                             <rect x="159.52" y="175" width="152" height="152" rx="8"
@@ -81,8 +83,8 @@
                         <div
                             class="relative pt-10 px-10 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3"></div>
-                            <img class="relative w-64" src="{{ Vite::asset('storage/app/public/' . $produit->image) }}"
-                                alt="Product Image">
+                            <img class="relative w-64 h-64 sm:h-48 lg:h-72"
+                                src="{{ Vite::asset('storage/app/public/' . $produit->image) }}" alt="Product Image">
                         </div>
                         <div class="relative text-white px-6 pb-6 mt-6">
                             <span class="block opacity-75 -mb-1">{{ $produit->nom }}</span>
