@@ -1,6 +1,6 @@
 <header>
     <div class="container mx-auto">
-        <nav class="flex items-center justify-between p-6 lg:px-32" aria-label="Global">
+        <nav class="flex items-center justify-between lg:px-32" aria-label="Global">
             <div class="flex lg:flex-1">
                 <a href="/" class="-m-1.5 p-1.5">
                     <span class="sr-only">Pet's Rações</span>
@@ -21,9 +21,16 @@
                 @endguest
             </div>
         </nav>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="/locale?lang=en">EN</a>
-            <a href="{{ route('locale', ['lang' => 'fr']) }}">FR</a>
+        <div class="flex justify-end gap-4 mt-2 lg:mt-0 pr-32 pb-2">
+            <a href="/locale?lang=en">
+                <img src="{{ Vite::asset('resources/img/estados-unidos.png') }}" alt="Estados Unidos" class="h-8 w-auto">
+            </a>
+            <a href="{{ route('locale', ['lang' => 'fr']) }}">
+                <img src="{{ Vite::asset('resources/img/franca.png') }}" alt="França" class="h-8 w-auto">
+            </a>
+            <a href="{{ route('locale', ['lang' => 'pt-br']) }}">
+                <img src="{{ Vite::asset('resources/img/Brasil.png') }}" alt="Brasil" class="h-8 w-auto">
+            </a>
         </div>
     </div>
 </header>

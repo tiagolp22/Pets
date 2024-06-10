@@ -9,9 +9,7 @@
                     <a href="/" class="block w-56 mb-10">
                         <img src="{{ Vite::asset('resources/img/logo-pets-racoes 150.png') }}" alt="Pets Rations" />
                     </a>
-                    <p class="text-justify">
-                        {{ __('produits.index.subtitle') }}
-                    </p>
+
                 </div>
 
 
@@ -51,18 +49,18 @@
                         <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.follow_us') }}</h2>
                     </div>
 
-                    <a href="lien-facebook"
+                    <a href="https://www.facebook.com/petsracoespiedade/"
                         class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="lien-insta"
+                    <a href="https://www.instagram.com/petsracoesrecife"
                         class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a href="lien-x"
+                    {{-- <a href="lien-x"
                         class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                         <i class="fa-brands fa-x-twitter"></i>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

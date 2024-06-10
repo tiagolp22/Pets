@@ -19,45 +19,51 @@ class ProduitController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        $nouveauProduit = new Produit();
+{
+    $tri = $request->query('tri', 'nom');
+    $direction = $request->query('direction', 'asc');
+    $prixMax = $request->query('prix-max');
+    $categories = $request->query('categorie', []);
+    $prixRange = $request->query('prix');
+    $nom = $request->query('nom');
 
-        session()->put("panier", ["produit", $nouveauProduit]);
-        // session()->flash("panier", ["produit", $nouveauProduit]); uma pagina apenas.
+    $produitQuery = Produit::with('categorie')->orderBy($tri, $direction);
 
-
-        Log::info($request->url());
-        Log::warning("message");
-
-        try {
-        } catch (Exception $e) {
-            Log::error("error");
-            return back()->with("erreur", $e->getMessage());
+    if (!empty($categories)) {
+        // Verifica se $categories é uma string
+        if (is_string($categories)) {
+            // Divide a string em um array usando vírgulas como delimitador
+            $categories = explode(',', $categories);
         }
-        // On ecupere le queryString de la requete donc de l`url Ex: www.petsracoes.com?tri=mon&direction=asc
-        $tri = $request->query('tri', 'nom');
-        $direction = $request->query('direction', 'asc');
-        $prixMax = $request->query('prix-max');
-        $categorie = $request->query("categorie");
 
-        //query demare une demande au modele et doit finir avec get()
-        $produitQuery = Produit::query();
-        if ($categorie) {
-            $produitQuery->where("cetegorie", "==", $categorie);
+        $produitQuery->whereHas('categorie', function ($query) use ($categories) {
+            $query->whereIn('nom', $categories);
+        });
+    }
+
+        if ($prixRange) {
+            $range = explode('-', $prixRange);
+            if (count($range) == 2) {
+                $produitQuery->whereBetween('prix', [(float)$range[0], (float)$range[1]]);
+            } elseif ($prixRange === '50+') {
+                $produitQuery->where('prix', '>', 50);
+            }
         }
-        $produitQuery->orderBy($tri, $direction);
-
 
         if ($prixMax) {
-            $produitQuery->where("prix", "<", $prixMax);
+            $produitQuery->where('prix', '<=', $prixMax);
         }
 
-        $produits = $produitQuery->simplePaginate(2)->withQueryString();
+        if ($nom) {
+            $produitQuery->where('nom', 'like', '%' . $nom . '%');
+        }
 
+        $produits = $produitQuery->paginate(10);
 
-        //$produits = $produitQuery->get();
-
-        return view("produits.index", ["produits" => $produits, "title" => "Produits"]);
+        return view('produits.index', [
+            'produits' => $produits,
+            'title' => 'Produits'
+        ]);
     }
 
 

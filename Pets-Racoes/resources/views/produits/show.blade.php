@@ -24,15 +24,20 @@
                                 <button
                                     class="inline-block bg-emerald-400 hover:bg-emerald-600 text-white px-4 py-2 rounded-full">Achat</button>
                             </div>
+                            @can('create', $produit)
                             <div class="px-2">
                                 <a href="{{ route('produit.create') }}"
                                     class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">Produit
                                     Create</a>
                             </div>
+                            @endcan
+                            @can('edit', $produit)
                             <div class="px-2">
                                 <a href="{{ route('produit.edit', $produit->id) }}"
                                     class="inline-block bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 rounded-full">Edit</a>
                             </div>
+                            @endcan
+                            @can('delete', $produit)
                             <div class="px-2">
                                 @auth
                                     <form action="{{ route('produit.destroy', $produit->id) }}" method="POST"
@@ -44,6 +49,7 @@
                                     </form>
                                 @endauth
                             </div>
+                            @endcan
                         </div>
                     </div>
                     <div class="md:flex-1 px-4 text-orange-600 max-w-md">

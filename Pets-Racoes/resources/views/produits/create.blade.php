@@ -80,12 +80,11 @@
                     <label class="block text-gray-700 font-bold mb-2" for="categorie">
                         Catégorie
                     </label>
-                    <select
-                        class="w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white leading-tight focus:shadow-outline"
-                        id="categorie" name="categorie_id">
+                    <select id="categorie" name="categorie_id" class="w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white leading-tight focus:shadow-outline">
                         <option value="">Sélectionnez une catégorie</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" {{ old('categorie_id') == $category->id ? 'selected' : '' }}>
+                            <option value="{{ $category->id }}"
+                                {{ old('categorie_id') == $category->id ? 'selected' : '' }}>
                                 {{ $category->nom }}
                             </option>
                         @endforeach
@@ -93,6 +92,7 @@
                     @error('categorie_id')
                         <p class="text-red-900 text-lg">{{ $message }}</p>
                     @enderror
+
                 </div>
                 <div class="flex items-center justify-center mb-4">
                     <button
