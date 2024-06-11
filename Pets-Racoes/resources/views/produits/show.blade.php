@@ -14,8 +14,36 @@
             <div class="flex flex-col md:flex-row -mx-4">
                 <div class="md:flex-1 px-4">
                     <div class="h-[460px] rounded-lg mb-4 bg-orange-300">
-                       <img class="w-full h-full object-cover"
+                        <img class="w-full h-full object-cover"
                                 src="{{ Vite::asset('storage/app/public/' . $produit->image) }}" alt="Product Image">
+                    </div>
+                    <div class="flex items-center justify-center space-x-2">
+                        @can('create', $produit)
+                        <div class="px-2">
+                            <a href="{{ route('produit.create') }}"
+                                class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-md">Produit
+                                Create</a>
+                        </div>
+                        @endcan
+                        @can('update', $produit)
+                        <div class="px-2">
+                            <a href="{{ route('produit.edit', $produit->id) }}"
+                                class="inline-block bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Edit</a>
+                        </div>
+                        @endcan
+                        @can('delete', $produit)
+                        <div class="px-2">
+                            @auth
+                            <form action="{{ route('produit.destroy', $produit->id) }}" method="POST"
+                                class="inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="bg-red-400 hover:bg-red-600 text-white px-4 py-2 rounded-md">Delete</button>
+                            </form>
+                            @endauth
+                        </div>
+                        @endcan
                     </div>
                 </div>
 
@@ -30,7 +58,7 @@
                         <span class="font-bold">Description:</span>
                         <p class="text-sm mt-2">{{ $produit->description }}</p>
                     </div>
-                    <a href="{{ route('checkout.form', $produit->id) }}" class="btn btn-primary mt-4">Acheter</a>
+                    <a href="{{ route('checkout.form', $produit->id) }}" class="btn btn-primary mt-3 inline-block px-6 py-3 rounded-md shadow-lg bg-blue-500 hover:bg-blue-600 text-white">Acheter</a>
                 </div>
             </div>
         </div>
