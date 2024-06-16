@@ -15,7 +15,8 @@
 
                 <div class="px-4 my-4 w-full sm:w-auto">
                     <div>
-                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.company') }}</h2>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.company') }}
+                        </h2>
                     </div>
                     <ul class="leading-8">
                         <li><a href="/a-propos" class="hover-footer">{{ __('footer.about') }}</a></li>
@@ -27,7 +28,8 @@
 
                 <div class="px-4 my-4 w-full sm:w-auto">
                     <div>
-                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.contact') }}</h2>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">
+                            {{ __('footer.contact') }}</h2>
                     </div>
                     <ul class="text-sm">
                         <li class="mb-2 hover-footer">
@@ -46,7 +48,8 @@
 
                 <div class="px-4 my-4 w-full sm:w-auto xl:w-1/5">
                     <div>
-                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">{{ __('footer.follow_us') }}</h2>
+                        <h2 class="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">
+                            {{ __('footer.follow_us') }}</h2>
                     </div>
 
                     <a href="https://www.facebook.com/petsracoespiedade/"
@@ -57,10 +60,6 @@
                         class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    {{-- <a href="lien-x"
-                        class="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a> --}}
                 </div>
             </div>
         </div>
