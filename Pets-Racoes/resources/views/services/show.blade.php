@@ -12,22 +12,6 @@
         <div class="py-8">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row -mx-4">
-                    <div class="md:flex-1 px-4">
-                        <div class="h-[460px] rounded-lg mb-4 bg-orange-300">
-                            <img src="{{ asset($service->imageFullpath()) }}" alt="{{ $service->nom }}"
-                                class="w-full h-full object-cover">
-                        </div>
-                        @can('create', $service)
-                            <div class="flex -mx-2 mb-4">
-                                <div class="px-2">
-                                    <a href="{{ route('service.create') }}"
-                                        class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-full">service
-                                        create</a>
-                                </div>
-                            </div>
-                        @endcan
-                    </div>
-
                     <div class="md:flex-1 px-4 text-orange-600 max-w-md">
                         <h2 class="text-2xl font-bold mb-2">{{ $service->nom }}</h2>
                         <div class="flex mb-4">
@@ -40,8 +24,30 @@
                             <p class="text-sm mt-2">{{ $service->description }}</p>
                         </div>
                     </div>
+                    <div class="md:flex-1 px-4">
+
+                        <div class="h-[460px] rounded-lg mb-4 bg-orange-300">
+                            <img src="{{ asset($service->imageFullpath()) }}" alt="{{ $service->nom }}"
+                                class="w-full h-full object-cover">
+                        </div>
+                        @can('create', $service)
+                            <div class="flex -mx-2 mb-4">
+                                <div class="px-2">
+                                    <a href="{{ route('service.create') }}"
+                                        class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white px-4 py-2 rounded-md">Create</a>
+                                </div>
+                            @endcan
+                            @can('update', $service)
+                                <div class="px-2">
+                                    <a href="{{ route('service.edit', $service->id) }}"
+                                        class="inline-block bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Edit</a>
+                                </div>
+                            @endcan
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 @endsection

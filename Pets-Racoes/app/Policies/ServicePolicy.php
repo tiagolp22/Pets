@@ -5,15 +5,18 @@ namespace App\Policies;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ServicePolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +24,7 @@ class ServicePolicy
      */
     public function view(User $user, Service $service): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -29,7 +32,7 @@ class ServicePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->role == "admin";
     }
 
     /**
@@ -37,7 +40,7 @@ class ServicePolicy
      */
     public function update(User $user, Service $service): bool
     {
-        //
+        return $user->role == "admin";
     }
 
     /**
@@ -45,7 +48,7 @@ class ServicePolicy
      */
     public function delete(User $user, Service $service): bool
     {
-        //
+        return $user->role == "admin";
     }
 
     /**
@@ -53,7 +56,7 @@ class ServicePolicy
      */
     public function restore(User $user, Service $service): bool
     {
-        //
+        return $user->role == "admin";
     }
 
     /**
@@ -61,6 +64,6 @@ class ServicePolicy
      */
     public function forceDelete(User $user, Service $service): bool
     {
-        //
+        return $user->role == "admin";
     }
 }
