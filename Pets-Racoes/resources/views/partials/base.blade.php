@@ -10,6 +10,8 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>@yield('title')</title>
+    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/img/logo-pets-racoes 150.png') }}">
+
 </head>
 
 <body class="min-h-screen min-w-screen flex flex-col">
