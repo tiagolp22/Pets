@@ -13,6 +13,8 @@ use App\Http\Controllers\ServiceController;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\PaymentController;
+use Laravel\Socialite\Facades\Socialite;
+
 
 Route::get('/locale', function (Request $request) {
     $query = $request->query();
@@ -72,3 +74,7 @@ Route::get('/linkstorage', function(){
 
 Route::get('/produits/{produit}/checkout', [PaymentController::class, 'showCheckoutForm'])->name('checkout.form');
 Route::post('/produits/{produit}/payment', [PaymentController::class, 'processPayment'])->name('payment.process');
+
+
+Route::get('/auth/{provider}', [AuthController::class, 'redirectToProvider']);
+Route::get('/auth/{provider}/callback', [AuthController::class, 'handleProviderCallback']);
